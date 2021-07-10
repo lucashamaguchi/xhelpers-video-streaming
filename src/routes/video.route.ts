@@ -40,6 +40,39 @@ class Routes extends BaseRoute {
               .code(400);
       })
       .build();
+
+    this.route(
+      "GET",
+      "/api/videos/{id}/caption",
+      {
+        description: "Route to get video caption",
+        tags: ["api", "videos"],
+      },
+      false
+    )
+      .validate({ params: this.defaultIdProperty })
+      .handler(async (r, h, u) => {
+        const entity = await this.service.getVideoCaption({
+          ...(r.params as any),
+          ...(r.headers as any)
+        });
+        return entity
+          ? h.response(entity.stream)
+            .type(entity.mimeType)
+            .header("Pragma", "no-cache")
+            .header("Cache-Control", "public, must-revalidate, max-age=0")
+            .header("Content-Range", entity.range)
+            .header("Accept-Ranges", "bytes")
+            .header("Content-Length", entity.chunkSize.toString())
+            .header("Content-Description", 'File Transfer')
+            .header("Content-Disposition", `attachment; filename=${entity.filename};`)
+            .header("Content-Transfer-Encoding", "binary")
+            .code(200)
+          : h
+              .response({ message: "Bad request" })
+              .code(400);
+      })
+      .build();
   }
 }
 
