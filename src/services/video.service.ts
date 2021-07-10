@@ -13,7 +13,7 @@ export default class Service {
     chunkSize: number;
     filename: string;
   }> {
-    const videoPath = `src/assets/${payload.id}.mp4`;
+    const videoPath = `${__dirname}/../assets/${payload.id}.mp4`;
     const videoStat = fs.statSync(videoPath);
     const fileSize = videoStat.size;
     const videoRange = payload.range;
@@ -32,7 +32,7 @@ export default class Service {
   }
 
   async getVideoCaption(payload) {
-    const captionPath = `../assets/captions/${payload.id}.vtt`;
+    const captionPath = `${__dirname}/../assets/captions/${payload.id}.vtt`;
     const captionStat = fs.statSync(captionPath);
     const fileSize = captionStat.size;
     const videoRange = payload.range;
