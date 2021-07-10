@@ -32,7 +32,7 @@ export default class Service {
   }
 
   async getVideoCaption(payload) {
-    const captionPath = `src/assets/captions/${payload.id}.vtt`;
+    const captionPath = `../assets/captions/${payload.id}.vtt`;
     const captionStat = fs.statSync(captionPath);
     const fileSize = captionStat.size;
     const videoRange = payload.range;

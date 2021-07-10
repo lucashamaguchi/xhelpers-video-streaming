@@ -26,6 +26,7 @@ COPY ./package.json /app/package.json
 COPY ./package-lock.json /app/package-lock.json
 COPY ./tsconfig.json /app/tsconfig.json
 COPY --from=build-env /app/dist /app/dist
+COPY --from=build-env /app/src/assets /app/dist/assets
 COPY --from=build-env /app/node_modules /app/node_modules
 
 WORKDIR /app
