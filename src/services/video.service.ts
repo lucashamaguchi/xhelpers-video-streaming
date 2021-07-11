@@ -1,6 +1,7 @@
 import BaseServiceMongoose from "xhelpers-api/lib/base-service-mongoose";
 import * as fs from "fs";
 import * as Boom from "@hapi/boom";
+import * as mongoose from "mongoose";
 import Model, { IModel } from "../model/video";
 import FileUploadService from "./fileupload.service";
 import AccountService from "./account.service";
@@ -125,5 +126,27 @@ export default class Service extends BaseServiceMongoose<IModel> {
 			},
 			query
 		);
+	}
+
+	public async getById(
+		user: any,
+		id: any,
+		projection: any = [],
+		populateOptions: { path: string | any; select?: string | any } = {
+			path: ".",
+			select: ["-__v"],
+		}
+	): Promise<IModel> {
+		Object.assign(projection, this.sentitiveInfo);
+		try {
+			return (await this.Model.findById(id)
+				.populate({ ...populateOptions })
+				.select([...projection])) as IModel;
+		} catch (err) {
+			if (err instanceof (mongoose as any).default.Error.CastError) {
+				return null;
+			}
+			throw err;
+		}
 	}
 }
