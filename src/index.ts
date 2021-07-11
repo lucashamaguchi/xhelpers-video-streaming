@@ -23,9 +23,7 @@ const options: createServerOptions = {
 		},
 		mongooseOptions: {
 			uri: process.env.MONGODB_URI,
-			connectionOptions: {
-				dbName: process.env.MONGODB_NAME,
-			},
+			connectionOptions: {},
 		},
 	},
 };
