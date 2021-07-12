@@ -10,6 +10,7 @@ const options: createServerOptions = {
 		host: process.env.HOST || "127.0.0.1",
 	},
 	options: {
+    jwt_secret: process.env.JWT_SECRET,
 		swaggerOptions: {
 			info: {
 				title: pkgJson.name,
