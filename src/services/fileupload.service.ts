@@ -6,8 +6,8 @@ export default class FileUploadService {
 	endpointCheckFile: string;
 
 	constructor() {
-		this.endpointPermanent = `${process.env.FILE_UPLOAD_API_URL}/api/files/permanent`;
-		this.endpointCheckFile = `${process.env.FILE_UPLOAD_API_URL}/api/files/check-file`;
+		this.endpointPermanent = `${process.env.FILEUPLOAD_API_URL}/api/files/permanent`;
+		this.endpointCheckFile = `${process.env.FILEUPLOAD_API_URL}/api/files/check-file`;
 	}
 
 	toFilename = (string) => string.replace(/[^a-zA-Z0-9-_.]/g, "_");
