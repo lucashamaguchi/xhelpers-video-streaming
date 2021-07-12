@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const pkgJson = require("../package.json");
 
-const options: createServerOptions = {
+const options: any = {
 	serverOptions: {
 		port: process.env.PORT || 3100,
 		host: process.env.HOST || "127.0.0.1",
@@ -24,7 +24,6 @@ const options: createServerOptions = {
 		},
 		mongooseOptions: {
 			uri: process.env.MONGODB_URI,
-			connectionOptions: {},
 		},
 	},
 };
