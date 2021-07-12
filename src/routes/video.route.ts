@@ -158,7 +158,7 @@ class Routes extends BaseRoute<Service> {
 			{
 				description: `Route to get ${resourceName}`,
 			},
-			true
+			false
 		)
 			.validate({ query: this.defaultSearchQuery })
 			.handler(async (r, h, u) => {
