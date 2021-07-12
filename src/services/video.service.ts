@@ -23,30 +23,30 @@ export default class Service extends BaseServiceMongoose<IModel> {
 		const user = await this.accountService.getApiUser();
 
 		// validate video file
-		if (payload.videoFile) {
+		if (payload.videoFileKey) {
 			if (
 				!(await this.fileuploadService.checkFileExists(
 					user,
-					payload.videoFile.key,
+					payload.videoFileKey,
 					true
 				))
 			)
 				throw Boom.badRequest(
-					`payload.videoFile.key (${payload.videoFile.key}) does not exists`
+					`payload.videoFileKey (${payload.videoFileKey}) does not exists`
 				);
 		}
 
 		// validate thumbnail file
-		if (payload.thumbnailFile) {
+		if (payload.thumbnailFileKey) {
 			if (
 				!(await this.fileuploadService.checkFileExists(
 					user,
-					payload.thumbnailFile.key,
+					payload.thumbnailFileKey,
 					true
 				))
 			)
 				throw Boom.badRequest(
-					`payload.thumbnailFile.key (${payload.thumbnailFile.key}) does not exists`
+					`payload.thumbnailFileKey (${payload.thumbnailFileKey}) does not exists`
 				);
 		}
 		return true;

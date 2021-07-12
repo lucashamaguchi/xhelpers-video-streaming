@@ -1,14 +1,9 @@
 import * as mongoose from "mongoose";
 
-export interface IFile {
-	key: string;
-	bucket: string;
-}
-
 export interface IModel extends mongoose.Document {
 	name: string;
-	videoFile: IFile;
-	thumbnailFile: IFile;
+	videoFileKey: string;
+	thumbnailFileKey: string;
 	description: string;
 	public: boolean;
 
@@ -19,15 +14,10 @@ export interface IModel extends mongoose.Document {
 	metadata: any;
 }
 
-const fileSchema = new mongoose.Schema({
-	key: { type: String },
-	bucket: { type: String },
-});
-
 const schema = new mongoose.Schema({
 	name: { type: String },
-	videoFile: fileSchema,
-	thumbnailFile: fileSchema,
+	videoFileKey: { type: String },
+	thumbnailFileKey: { type: String },
 	description: { type: String },
 	public: { type: Boolean },
 
