@@ -118,7 +118,8 @@ class Routes extends BaseRoute<Service> {
 				const entity = await this.service.create(u, r.payload);
 				if (!entity) throw Boom.badRequest("bad request");
 				return h.response(entity).code(200);
-			});
+			})
+			.build();
 
 		this.route(
 			"PATCH",
@@ -133,7 +134,8 @@ class Routes extends BaseRoute<Service> {
 				const entity = await this.service.create(u, r.payload);
 				if (!entity) throw Boom.badRequest("bad request");
 				return h.response(entity).code(200);
-			});
+			})
+			.build();
 
 		this.route(
 			"DELETE",
@@ -147,7 +149,8 @@ class Routes extends BaseRoute<Service> {
 			.handler(async (r, h, u) => {
 				await this.service.delete(u, r.params.id);
 				return h.response({}).code(200);
-			});
+			})
+			.build();
 
 		this.route(
 			"GET",
@@ -162,7 +165,8 @@ class Routes extends BaseRoute<Service> {
 				const entity = await this.service.queryAll(u, r.query);
 				if (!entity) throw Boom.badRequest("bad request");
 				return h.response(entity).code(200);
-			});
+			})
+			.build();
 
 		this.route(
 			"GET",
@@ -177,7 +181,8 @@ class Routes extends BaseRoute<Service> {
 				const entity = await this.service.queryAllUser(u, r.query);
 				if (!entity) throw Boom.badRequest("bad request");
 				return h.response(entity).code(200);
-			});
+			})
+			.build();
 	}
 }
 
