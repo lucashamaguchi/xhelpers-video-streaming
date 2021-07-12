@@ -10,7 +10,7 @@ export default class FileUploadService {
 		this.endpointCheckFile = `${process.env.FILEUPLOAD_API_URL}/api/files/check-file`;
 	}
 
-	toFilename = (string) => string.replace(/[^a-zA-Z0-9-_.]/g, "_");
+	toFilename = (string) => string.replace(/[^a-zA-Z0-9-_./]/g, "_");
 
 	async makeFilePermanent(user, sourceFilename, destinationFilename) {
 		const payload = {
