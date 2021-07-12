@@ -50,5 +50,10 @@ describe("Testing Videos API", () => {
 			const response = await server.inject("/documentation");
 			expect(response.statusCode).to.equal(200);
 		});
+
+		it("GET Videos", async () => {
+			const response = await server.inject("/api/videos");
+			expect(response.statusCode).to.equal(200);
+		});
 	});
 });
