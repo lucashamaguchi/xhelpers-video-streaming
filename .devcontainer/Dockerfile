@@ -4,6 +4,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y git build-essential
+RUN npm install -g npm@latest
 
 COPY ./ /app
 RUN npm install

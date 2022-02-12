@@ -13,9 +13,6 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "@hapi/podium": [
-        "node_modules/@types/hapi__podium"
-      ],
       "mongoose": [
         "node_modules/@types/mongoose"
       ]
