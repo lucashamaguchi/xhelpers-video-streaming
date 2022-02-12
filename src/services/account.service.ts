@@ -2,9 +2,11 @@ import axios from "axios";
 
 export default class AccountService {
 	private endpointLogin: string;
+
 	constructor() {
-		this.endpointLogin = `${process.env.ACCOUNT_API_URL}/api/auth`
+		this.endpointLogin = `${process.env.ACCOUNT_API_URL}/api/auth`;
 	}
+
 	async getApiUser(): Promise<{
 		email: string;
 		name: string;
