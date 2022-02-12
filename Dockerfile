@@ -9,6 +9,8 @@ WORKDIR /app
 
 COPY ./src/ /app/src/
 
+RUN npm install -g npm
+
 RUN npm ci
 RUN npm audit fix
 RUN npm run build
